@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Pipes : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private Rigidbody2D rb;
+
+    private void Update()
     {
-        
+        rb.velocity = new Vector2(moveSpeed, 0);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        
+        if (collider.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

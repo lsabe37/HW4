@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class PipeSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject groundPipe;
+    [SerializeField] private GameObject ceilingPipe;
+    private float spawnHeight;
+    private float timer;
+    [SerializeField] private float spawnCoolDown;
+
+
+    private void Update()
     {
-        
+        timer += Time.deltaTime;
+
+        if (timer >= spawnCoolDown)
+        {
+            SpawnPipe();
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SpawnPipe()
     {
-        
+        spawnHeight = Random.Range(-3f, -.7f);
+        Vector2 spawnLocation = new Vector2(transform.position.x, spawnHeight);
+        Instantiate(groundPipe, spawnLocation, Quaternion.identity);
+
+        Vector2 spawnLocationB = new Vector2(spawnLocation.x, spawnLocation.y + 7f);
+        Instantiate(ceilingPipe, spawnLocationB, Quaternion.identity);
+
+        timer = 0f;
     }
 }

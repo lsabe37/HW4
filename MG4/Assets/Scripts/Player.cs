@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private int jump;
+    [SerializeField] private float jumpForce;
 
 
     private void Update()
@@ -17,6 +18,6 @@ public class Player : MonoBehaviour
     }
     private void Jump()
     {
-        rb.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
+        rb.velocity = new Vector2(0, jumpForce);
     }
 }

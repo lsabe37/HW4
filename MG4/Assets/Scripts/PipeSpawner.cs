@@ -28,7 +28,7 @@ public class PipeSpawner : MonoBehaviour
         Vector2 spawnLocation = new Vector2(transform.position.x, spawnHeight);
         Instantiate(groundPipe, spawnLocation, Quaternion.identity);
 
-        Vector2 spawnLocationB = new Vector2(spawnLocation.x, spawnLocation.y + 7f);
+        Vector2 spawnLocationB = new Vector2(spawnLocation.x, spawnLocation.y + 7.5f);
         Instantiate(ceilingPipe, spawnLocationB, Quaternion.identity);
 
         timer = 0f;

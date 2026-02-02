@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Locator.Instance.player.gameOver += endGame;
+        Time.timeScale = 1f;
     }
 
     public void endGame()

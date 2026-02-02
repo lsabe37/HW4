@@ -15,11 +15,15 @@ public class Player : MonoBehaviour
     public delegate void gameOverEvent();
     public event gameOverEvent gameOver;
 
+    public delegate void jumpEvent();
+    public event jumpEvent jump;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
+            jump();
         }
     }
     private void Jump()

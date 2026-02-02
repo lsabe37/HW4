@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class VfxManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public AudioClip pointsClip;
+    public AudioClip gameOverClip;
+    public AudioClip jumpClip;
+
+
+    private void Start()
     {
-        
+        Locator.Instance.player.getPoint += playPointsClip;
+        Locator.Instance.player.gameOver += playGameOverClip;
+        Locator.Instance.player.jump += playJumpClip;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void playPointsClip()
     {
-        
+        AudioSource.PlayClipAtPoint(pointsClip, transform.position);
+    }
+
+    public void playGameOverClip()
+    {
+        AudioSource.PlayClipAtPoint(gameOverClip, transform.position);
+    }
+
+    public void playJumpClip()
+    {
+        AudioSource.PlayClipAtPoint(jumpClip, transform.position);
     }
 }
